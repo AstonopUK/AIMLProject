@@ -5,8 +5,8 @@ using UnityEngine;
 public class SceneController : MonoBehaviour
 {
 
-    static int[,] GridMap = new int[38,20];
-    static int[,] Blockade = new int[38, 20];
+    public int[,] Blockade = new int[38, 20];
+    public int[,] GridMap = new int[38, 20];
 
     public Rigidbody Cube;
 
@@ -25,8 +25,13 @@ public class SceneController : MonoBehaviour
                 if (rIntX == 1)
                 {
 
-                    Instantiate(Cube, new Vector3(x, 1, z), Quaternion.identity);
-                    Blockade[x, z] = 1;
+                    if (z != 0 && x != 0 && z != 37 && x != 19)
+                    {
+
+                        Instantiate(Cube, new Vector3(x, 1, z), Quaternion.identity);
+                        Blockade[x, z] = 1;
+
+                    }
 
                 }
                 else
@@ -47,7 +52,7 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
 
     }
